@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react'
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [email, setEmail] = useState('')
+  cont [preference, setPreferece] = useState([])
 
   return (
     <div className="App">
