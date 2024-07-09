@@ -38,4 +38,32 @@ public class User {
         }
         return id;
     }
+
+    public String getID(){
+        return userID;
+    }
+
+    public String getFirstName(){
+        return firstName;
+    }
+
+    public String getLastName(){
+        return lastName;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public String getPassword(){
+        return password;
+    }
+
+    public int getAge(){
+        return age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
 }
