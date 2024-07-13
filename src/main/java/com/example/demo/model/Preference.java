@@ -1,15 +1,24 @@
-package com.example.demo;
+package com.example.demo.model;
 
 public class Preference {
     
+    //enum class ensures only limited values to be given to variable
+    public enum TimePreference{
+        MORNING,
+        AFTERNOON,
+        EVENING
+    }
+
     private int length;
-    private String time;
-    
+    private TimePreference time;
+    private int uid;
+
     public Preference() {}
 
-    public Preference(String time, int length){
+    public Preference(int uid, TimePreference time, int length){
         this.time = time;
         this.length = length;
+        this.uid = uid;
     }
 
     /* Getters & Setters */
@@ -18,7 +27,7 @@ public class Preference {
         return length;
     }
 
-    public String getTime() {
+    public TimePreference getTime() {
         return time;
     }
 
@@ -26,7 +35,15 @@ public class Preference {
         this.length = length;
     }
 
-    public void setTime(String time) {
+    public void setTime(TimePreference time) {
         this.time = time;
+    }
+
+    public int getUID() {
+        return uid;
+    }
+
+    public void setUID(int uid) {
+        this.uid = uid;
     }
 }
