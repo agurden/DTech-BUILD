@@ -43,6 +43,8 @@ public class User {
         return userID;
     }
 
+    public void setID(String newID) {userID = newID;}
+
     public String getFirstName(){
         return firstName;
     }

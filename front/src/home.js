@@ -12,6 +12,8 @@ const Home = ({ loggedIn, email }) => {
   const [createEmail, setCreateEmail] = useState('');
   const [createPassword, setCreatePassword] = useState('');
   const [createConfirmPassword, setCreateConfirmPassword] = useState('');
+  const [createGender, setCreateGender] = useState('');
+  const [createAge, setCreateAge] = useState(''); // State for age
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [authError, setAuthError] = useState('');
@@ -54,16 +56,23 @@ const Home = ({ loggedIn, email }) => {
     setCreateConfirmPassword(event.target.value);
   };
 
+  const handleCreateGenderChange = (event) => {
+    setCreateGender(event.target.value);
+  };
+
+  const handleCreateAgeChange = (event) => {
+    const ageValue = event.target.value;
+    // Ensure age is a non-negative integer
+    if (ageValue === '' || /^\d+$/.test(ageValue)) {
+      setCreateAge(ageValue);
+    }
+  };
+
   const authenticateUser = (email, password) => {
-    // Mock authentication logic
     const validEmail = 'user@example.com';
     const validPassword = 'password123';
 
-    if (email === validEmail && password === validPassword) {
-      return true;
-    } else {
-      return false;
-    }
+    return email === validEmail && password === validPassword;
   };
 
   const handleLoginSubmit = () => {
@@ -82,7 +91,7 @@ const Home = ({ loggedIn, email }) => {
     }
 
     if (authenticateUser(inputEmail, inputPassword)) {
-      navigate('/dashboard'); // Navigate to dashboard or update loggedIn state on successful login
+      navigate('/dashboard');
     } else {
       setAuthError('Invalid email or password');
     }
@@ -90,6 +99,14 @@ const Home = ({ loggedIn, email }) => {
 
   const handleCreateAccountSubmit = () => {
     // Handle account creation logic here...
+    console.log('Account created:', {
+      firstName: createFirstName,
+      lastName: createLastName,
+      email: createEmail,
+      password: createPassword,
+      gender: createGender,
+      age: createAge,
+    });
     navigate('/account-created');
   };
 
@@ -173,6 +190,27 @@ const Home = ({ loggedIn, email }) => {
               value={createLastName}
               onChange={handleCreateLastNameChange}
               placeholder="Enter your last name"
+              style={{ marginBottom: '10px', width: '300px', padding: '10px' }}
+            />
+            <br />
+            <select
+              className="inputField"
+              value={createGender}
+              onChange={handleCreateGenderChange}
+              style={{ marginBottom: '10px', width: '300px', padding: '10px' }}
+            >
+              <option value="">Select your gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+            <br />
+            <input
+              type="number"
+              className="inputField"
+              value={createAge}
+              onChange={handleCreateAgeChange}
+              placeholder="Enter your age"
               style={{ marginBottom: '10px', width: '300px', padding: '10px' }}
             />
             <br />
