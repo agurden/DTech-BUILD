@@ -26,6 +26,7 @@ const Home = ({ loggedIn, email }) => {
   const handleCreateAccountButtonClick = () => {
     setShowCreateAccountForm(true);
     setShowLoginForm(false);
+    navigate('/create-user'); // Navigate to Create User Form
   };
 
   const handleEmailChange = (event) => {
@@ -61,11 +62,7 @@ const Home = ({ loggedIn, email }) => {
   };
 
   const handleCreateAgeChange = (event) => {
-    const ageValue = event.target.value;
-    // Ensure age is a non-negative integer
-    if (ageValue === '' || /^\d+$/.test(ageValue)) {
-      setCreateAge(ageValue);
-    }
+    setCreateAge(event.target.value); // Handle age change
   };
 
   const authenticateUser = (email, password) => {
@@ -109,6 +106,7 @@ const Home = ({ loggedIn, email }) => {
     });
     navigate('/account-created');
   };
+
 
   return (
     <div className="mainContainer" style={{ backgroundColor: "#003087", color: 'white', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

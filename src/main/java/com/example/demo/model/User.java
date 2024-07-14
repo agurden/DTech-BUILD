@@ -1,7 +1,16 @@
 package com.example.demo.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class User {
-    private String userID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String firstName;
     private String lastName;
     private String email;
@@ -9,11 +18,9 @@ public class User {
     private int age;
     private String gender;
 
-    public User(){}
-
+    // Constructors, getters, and setters
+    // Constructor with all fields
     public User(String firstName, String lastName, String email, String password, int age, String gender) {
-
-        this.userID = generateUID(firstName, lastName);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -22,50 +29,64 @@ public class User {
         this.gender = gender;
     }
 
-    private String generateID(String firstName, String lastName){
-        return "" + firstName.charAt(0) + lastName.charAt(0) + Math.random()*100;
+    // Default constructor (required by JPA)
+    public User() {
     }
 
-    private boolean uniqueID(String id){
-        //check if unique
-        return true;
-    }
-
-    private String generateUID(String firstName, String lastName){
-        String id = generateID(firstName, lastName);
-        while(!uniqueID(id)){
-            id = generateID(firstName, lastName);
-        }
+    // Getters and setters
+    public Long getId() {
         return id;
     }
 
-    public String getID(){
-        return userID;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setID(String newID) {userID = newID;}
-
-    public String getFirstName(){
+    public String getFirstName() {
         return firstName;
     }
 
-    public String getLastName(){
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
         return lastName;
     }
 
-    public String getEmail(){
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
         return email;
     }
 
-    public String getPassword(){
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
         return password;
     }
 
-    public int getAge(){
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getAge() {
         return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public String getGender() {
         return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }
