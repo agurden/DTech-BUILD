@@ -3,15 +3,13 @@ import { useNavigate } from 'react-router-dom';
 
 const CreateUserForm = () => {
   const navigate = useNavigate();
-
   const [createFirstName, setCreateFirstName] = useState('');
   const [createLastName, setCreateLastName] = useState('');
   const [createEmail, setCreateEmail] = useState('');
   const [createPassword, setCreatePassword] = useState('');
   const [createConfirmPassword, setCreateConfirmPassword] = useState('');
-  const [createAge, setCreateAge] = useState('');
   const [createGender, setCreateGender] = useState('');
-
+  const [createAge, setCreateAge] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [ageError, setAgeError] = useState('');
@@ -152,7 +150,6 @@ const CreateUserForm = () => {
           <option value="">Select your gender</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
-          <option value="Other">Other</option>
         </select>
         <br />
         <button
