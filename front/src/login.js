@@ -32,8 +32,8 @@ const Login = () => {
   return (
     <div className="mainContainer" style={{ backgroundColor: "#003087", color: 'white', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <div className="contentContainer">
-        <div className="titleContainer" style={{ textAlign: 'center'}}>
-          <div>Login</div>
+        <div className="titleContainer" style={{ textAlign: 'center', marginBottom: '30px'}}>
+          <div>Welcome back!</div>
         </div>
         <form onSubmit={handleLoginSubmit} className="loginFormContainer" style={{ textAlign: 'center' }}>
           <input
@@ -42,7 +42,7 @@ const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
             className="inputField"
-            style={{ marginBottom: '10px', width: '300px', padding: '10px' }}
+            style={{ marginBottom: '15px', width: '300px', marginBottom: '10px' }}
           />
           <br />
           <input
@@ -51,7 +51,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
             className="inputField"
-            style={{ marginBottom: '10px', width: '300px', padding: '10px' }}
+            style={{ marginBottom: '30px', width: '300px', padding: '10px' }}
           />
           <br />
           <input
