@@ -1,74 +1,70 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Login = (props) => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [emailError, setEmailError] = useState('')
-  const [passwordError, setPasswordError] = useState('')
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [authError, setAuthError] = useState('');
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
+  const authenticateUser = () => {
+    // Replace with actual authentication logic (e.g., API call)
+    const validEmail = 'user@example.com';
+    const validPassword = 'password123';
 
-  const onButtonClick = () => {
-    // Set initial error values to empty
-    setEmailError('')
-    setPasswordError('')
-  
-    // Check if the user has entered both fields correctly
-    if ('' === email) {
-      setEmailError('Please enter your email')
-      return
+    if (email === validEmail && password === validPassword) {
+      return true;
+    } else {
+      return false;
     }
-  
-    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      setEmailError('Please enter a valid email')
-      return
+  };
+
+  const handleLoginSubmit = (event) => {
+    event.preventDefault();
+
+    if (authenticateUser()) {
+      navigate('/dashboard'); // Redirect to dashboard upon successful login
+    } else {
+      setAuthError('Invalid email or password');
     }
-  
-    if ('' === password) {
-      setPasswordError('Please enter a password')
-      return
-    }
-  
-    if (password.length < 7) {
-      setPasswordError('The password must be 8 characters or longer')
-      return
-    }
-  
-    // Authentication calls will be made here...
-  }
+  };
 
   return (
-    <div className={'mainContainer'}>
-      <div className={'titleContainer'}>
-        <div>Login</div>
-      </div>
-      <br />
-      <div className={'inputContainer'}>
-        <input
-          value={email}
-          placeholder="Enter your email here"
-          onChange={(ev) => setEmail(ev.target.value)}
-          className={'inputBox'}
-        />
-        <label className="errorLabel">{emailError}</label>
-      </div>
-      <br />
-      <div className={'inputContainer'}>
-        <input
-          value={password}
-          placeholder="Enter your password here"
-          onChange={(ev) => setPassword(ev.target.value)}
-          className={'inputBox'}
-        />
-        <label className="errorLabel">{passwordError}</label>
-      </div>
-      <br />
-      <div className={'inputContainer'}>
-        <input className={'inputButton'} type="button" onClick={onButtonClick} value={'Log in'} />
+    <div className="mainContainer" style={{ backgroundColor: "#003087", color: 'white', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div className="contentContainer">
+        <div className="titleContainer" style={{ textAlign: 'center'}}>
+          <div>Login</div>
+        </div>
+        <form onSubmit={handleLoginSubmit} className="loginFormContainer" style={{ textAlign: 'center' }}>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+            className="inputField"
+            style={{ marginBottom: '10px', width: '300px', padding: '10px' }}
+          />
+          <br />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+            className="inputField"
+            style={{ marginBottom: '10px', width: '300px', padding: '10px' }}
+          />
+          <br />
+          <input
+            type="submit"
+            className="inputButton"
+            value="Log in"
+            style={{ fontSize: '1.2em', padding: '10px 20px' }}
+          />
+          {authError && <div style={{ color: 'red', marginTop: '10px' }}>{authError}</div>}
+        </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
