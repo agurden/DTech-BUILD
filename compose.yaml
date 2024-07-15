@@ -9,3 +9,5 @@ services:
       - MYSQL_DATABASE=db
     volumes:
       - db:/var/lib/mysql
+volumes:
+  db:
