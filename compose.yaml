@@ -1,12 +1,11 @@
 services:
-  web:
-    build: .
+  db:
+    image: mysql:latest
+    container_name: container
     ports:
-      - "8000:5000"
-    develop:
-      watch:
-        - action: sync
-          path: .
-          target: /code
-  redis:
-    image: "redis:alpine"
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=db
+    volumes:
+      - db:/var/lib/mysql
