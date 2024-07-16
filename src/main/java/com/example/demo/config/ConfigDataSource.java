@@ -1,8 +1,8 @@
 // Java Program Illustrating Configuration of
 // DataSourceConfiguration of DataSource
- 
-package gfg;
- 
+
+package com.example.demo.config;
+
 import javax.sql.DataSource;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -19,13 +19,13 @@ public class ConfigDataSource {
  
         DataSourceBuilder<?> dSB
             = DataSourceBuilder.create();
-        dSB.driverClassName("com.mysql.jdbc.Driver");
+        dSB.driverClassName("com.mysql.cj.jdbc.Driver");
  
         // MySQL specific url with database name
-        dSB.url("jdbc:mysql://localhost:3306/db");
+        dSB.url("jdbc:mysql://localhost:3306/user");
  
         // MySQL username credential
-        dSB.username("user");
+        dSB.username("root");
  
         // MySQL password credential
         dSB.password("password");
