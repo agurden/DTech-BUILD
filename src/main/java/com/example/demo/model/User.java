@@ -73,4 +73,12 @@ public class User {
     public String getGender() {
         return gender;
     }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

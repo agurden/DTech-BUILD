@@ -8,36 +8,38 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 import com.example.demo.model.User;
 import com.example.demo.config.ConfigDataSource;
- 
+//import lombok.extern.slf4j.Slf4j;
+
 // Annotation to provide logging feature
  
 // Class
 public class JDBC {
- 
+
     public int insert(User user)
     {
         DataSource dataSource = null;
         Connection connection = null;
         PreparedStatement prepStatement = null;
- 
+        System.out.println("inserting user");
         int result = 0;
         try {
  
             // Get the configured datasource
             dataSource = ConfigDataSource.source();
+            System.out.println("got datasource");
             // Attempt for connection to MySQL
             connection = dataSource.getConnection();
+            System.out.println("got connection");
             prepStatement = connection.prepareStatement(
-                    "insert into user (user,username,password) values (?,?,?)");
+                    "insert into user (name,email) values (?,?)");
             prepStatement.setString(1, user.getFirstName());
             prepStatement.setString(2, user.getEmail());
-            prepStatement.setString(3, user.getPassword());
- 
+
             result = prepStatement.executeUpdate();
         }
         catch (SQLException e) {
             //log.getName();
-            System.out.println("FAILED");
+            System.out.println("sqlexception");
         }
  
         return result;
