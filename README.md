@@ -34,3 +34,21 @@
     npm start
     ```
 </strong></big>
+
+## Run Database Locally
+Annie worked on adding a database; we were able to sync this morning and get them to a point where there's a user table to be used.
+
+One-time local setup instructions from within DTech-Build repo (top package) in terminal:
+
+```cd database docker compose up ```
+
+To connect and view the DB (please no manual changes:
+
+```mysql -h 127.0.0.1 -P 3306 -u root -p ```
+Use password "password" when prompted.
+
+To add to the database for others to create upon startup:
+
+- To include a new column to an existing table, add new columns with their name and variable type
+- To include a new table, add a `CREATE TABLE` statement to `initiate.sql`
+- After adding to the database or to integrate others' changes, remove your existing local database with `docker compose down -v` before doing `docker compose up` to update your local database schema(s).

@@ -12,7 +12,7 @@ import com.example.demo.config.ConfigDataSource;
 // Class
 public class JDBC {
 
-    public int insert(User user)
+    public int insertUser(User user)
     {
         DataSource dataSource = null;
         Connection connection = null;

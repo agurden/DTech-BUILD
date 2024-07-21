@@ -7,6 +7,7 @@ import java.util.Date;
 
 @RestController
 public class Controls {
+    private static JDBC sqlDatabaseConnection = new JDBC();
     @GetMapping("/api/time")
     public String time() {
         return new Date() + "\n";
@@ -20,8 +21,7 @@ public class Controls {
         User n = new User();
         n.setFirstName(name);
         n.setEmail(email);
-        JDBC SQL = new JDBC();
-        int result = SQL.insert(n);
+        int result = sqlDatabaseConnection.insertUser(n);
         if(result == 1) {return "Saved";}
         return "FAILED";
     }
