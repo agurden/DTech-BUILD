@@ -31,7 +31,7 @@ public class JDBC {
             connection = dataSource.getConnection();
             System.out.println("got connection");
             prepStatement = connection.prepareStatement(
-                    "insert into user (name,email) values (?,?)");
+                    "insert into users (name,email) values (?,?)");
             prepStatement.setString(1, user.getFirstName());
             prepStatement.setString(2, user.getEmail());
 
@@ -39,7 +39,7 @@ public class JDBC {
         }
         catch (SQLException e) {
             //log.getName();
-            System.out.println("sqlexception");
+            System.out.println(e.getMessage());
         }
  
         return result;

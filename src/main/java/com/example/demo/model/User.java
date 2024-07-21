@@ -11,13 +11,6 @@ public class User {
 
     public User(){}
 
-    //testing db
-    public User(String user, String userName, String password) {
-        this.firstName = user;
-        this.email = userName;
-        this.password = password;
-    }
-
     public User(String firstName, String lastName, String email, String password, int age, String gender) {
 
         this.userID = generateUID(firstName, lastName);
