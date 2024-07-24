@@ -1,5 +1,10 @@
 package com.example.demo.model;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
+@Entity
 public class Preference {
     
     //enum class ensures only limited values to be given to variable

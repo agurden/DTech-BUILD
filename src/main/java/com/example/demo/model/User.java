@@ -18,7 +18,10 @@ public class User {
     private int age;
     private String gender;
 
-    // Constructors, getters, and setters
+    // Default constructor (required by JPA)
+    public User() {
+    }
+
     // Constructor with all fields
     public User(String firstName, String lastName, String email, String password, int age, String gender) {
         this.firstName = firstName;
@@ -27,10 +30,6 @@ public class User {
         this.password = password;
         this.age = age;
         this.gender = gender;
-    }
-
-    // Default constructor (required by JPA)
-    public User() {
     }
 
     // Getters and setters
