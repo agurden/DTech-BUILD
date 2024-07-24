@@ -11,7 +11,84 @@ const Home = () => {
   };
 
   const handleCreateAccountButtonClick = () => {
+<<<<<<< HEAD
     navigate('/create-user'); // Navigate to Create User Form
+=======
+    setShowCreateAccountForm(true);
+    setShowLoginForm(false);
+  };
+
+  const handleEmailChange = (event) => {
+    setInputEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setInputPassword(event.target.value);
+  };
+
+  const handleCreateFirstNameChange = (event) => {
+    setCreateFirstName(event.target.value);
+  };
+
+  const handleCreateLastNameChange = (event) => {
+    setCreateLastName(event.target.value);
+  };
+
+  const handleCreateEmailChange = (event) => {
+    setCreateEmail(event.target.value);
+  };
+
+  const handleCreatePasswordChange = (event) => {
+    setCreatePassword(event.target.value);
+  };
+
+  const handleCreateConfirmPasswordChange = (event) => {
+    setCreateConfirmPassword(event.target.value);
+  };
+
+  const authenticateUser = (email, password) => {
+    // Mock authentication logic
+    const validEmail = 'user@example.com';
+    const validPassword = 'password123';
+
+    if (email === validEmail && password === validPassword) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const handleLoginSubmit = () => {
+    
+    // Example authentication logic goes here...
+    navigate('/userhome'); // Navigate to user homepage or update loggedIn state on successful login
+    
+    setEmailError('');
+    setPasswordError('');
+    setAuthError('');
+
+    if (inputEmail === '') {
+      setEmailError('Please enter your email');
+      return;
+    }
+
+    if (inputPassword === '') {
+      setPasswordError('Please enter your password');
+      return;
+    }
+
+    if (authenticateUser(inputEmail, inputPassword)) {
+      navigate('/dashboard'); // Navigate to dashboard or update loggedIn state on successful login
+    } else {
+      setAuthError('Invalid email or password');
+    }
+  };
+
+  const handleCreateAccountSubmit = () => {
+    // Handle account creation logic here...
+    navigate('/account-created');
+    
+>>>>>>> origin
   };
 
   return (
