@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("/api")
 public class PrefController {
+
     @Autowired
     private PreferenceServices preferenceServices;
-    
-    @PostMapping(produces = "preferences/json")
-    public ResponseEntity<Preference> add(@RequestBody Preference preference){
 
+    @PostMapping(produces = "application/json")
+    public ResponseEntity<Preference> add(@RequestBody Preference preference) {
         Preference addedPreference = this.preferenceServices.add(preference);
         return new ResponseEntity<>(addedPreference, HttpStatus.CREATED);
     }
