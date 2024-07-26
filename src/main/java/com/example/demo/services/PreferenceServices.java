@@ -1,7 +1,5 @@
 package com.example.demo.services;
 
-import com.example.demo.model.Preference;
-import com.example.demo.respository.PreferenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
