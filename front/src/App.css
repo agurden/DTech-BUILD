@@ -55,11 +55,20 @@
 
 .inputBox {
   height: 48px;
-  width: 400px;
+  width: 100%;
   font-size: large;
   border-radius: 8px;
   border: 1px solid grey;
   padding-left: 8px;
+  box-sizing: border-box;
+}
+
+.inputContainer label{
+  display:block;
+  text-align: left;
+  margin-bottom: 5px;
+  width: 100%;
+  color: cornsilk;
 }
 
 .inputField {
@@ -70,15 +79,18 @@
 
 .specialButton {
   align-items: center;
-  width: 260px; /* Ensure the width is equal to the height */
-  height: 260px; /* This is already set */
+  width: 150px; /* Ensure the width is equal to the height */
+  height: 150px; /* This is already set */
   border-radius: 50%; /* This makes the button round */
   background-color: cornflowerblue;
   color: white; /* Example text color */
   border: none; /* Remove default border */
   cursor: pointer; /* Change cursor to pointer */
   font-size: 1.5em; /* Example font size */
-  box-shadow: 2px 2px 4px rgba(0, 0, 30, 0.2);
+  box-shadow: 2px 2px 30px rgba(0, 0, 30, 0.2);
+  margin-bottom: 50px;
+  font-weight: bolder;
+  font-size: large;
 }
 
 .newButton {
@@ -86,6 +98,7 @@
   justify-content: center; /* Horizontally center the button */
   align-items: center; /* Vertically center the button */
   height: 100vh; /* Adjust the height as needed */
+  flex-direction: column;
 }
 
 .userName {

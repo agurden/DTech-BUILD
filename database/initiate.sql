@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS `userdatabase`.`users`
     `email`            VARCHAR(24)   NOT NULL
     );
 CREATE TABLE 'userdatabase'.'preferences'(
-    'uid' VARCHAR(5) PRIMARY KEY, /* foreign key(uid) references users(uid)*/
+    'uid' VARCHAR(24) PRIMARY KEY, /* foreign key(uid) references users(uid)*/
     'length_workout' INT NOT NULL,
-    'time_workout' VARCHAR(10) NOT NULL
+    'time_workout' ENUM('MORNING', 'AFTERNOON', 'EVENING') NOT NULL
 );

@@ -6,14 +6,19 @@ function UserHome() {
 
   return (
     <>
-    <div className="userName">
-        <h1>Welcome Back!</h1>
-    </div>
-    <div className="newButton">
-        <button className="specialButton" onClick={() => { navigate("/findbuddy") }}>
-            Find Gym Buddy
+    <div className='mainContainer' style={{backgroundColor: "#003087"}}>
+      <div className="titleContainer" style={{marginTop: '50px', color: "white"}}>
+        Welcome Back!
+      </div>
+      <div className="newButton">
+        <button className="specialButton" onClick={() => { navigate("/findbuddy") }} style={{height: "260px", width: "260px", fontSize: "1.7em"}}>
+            Find Buddy
         </button>
-    </div>
+        <button className="specialButton" onClick={() => { navigate("/CreatePreferences") }}>
+            Preferences
+        </button>
+      </div>
+      </div>
     </>
   );
 }

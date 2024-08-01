@@ -1,113 +1,112 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const CreatePreferences = () => {
+function CreatePreferences() {
+  const [preferences, setPreferences] = useState({
+    uid: "",
+    length: "",
+    time: "",
+  });
   const navigate = useNavigate();
-  const [createTime, setWorkoutTime] = useState('');
-  const [createLength, setWorkoutLength] = useState('');
 
-  const [timeError, setTimeError] = useState('');
-  const [lengthError, setLengthError] = useState('');
-  
-  const [authError, setAuthError] = useState('');
-  const [IsChecked, setIsChecked] = useState('');
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setPreferences((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
 
-  const createPref = async () => {
-    const prefData = {
-      time : createTime,
-      length : parseInt(createLength)
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    
+    const preference = {
+      uid: parseInt(preferences.uid, 10),
+      length: parseInt(preferences.length, 10),
+      time: preferences.time.toUpperCase()
     };
 
+    navigate("/userhome")
+  
     try {
-      const response = await fetch('http://localhost:8080/api/preferences', {
+      const response = await fetch('https://localhost:3000/api/preferences', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(prefData)
+        body: JSON.stringify(preference),
       });
-
+  
       if (!response.ok) {
-        throw new Error('Failed to create preferences');
+        throw new Error('Network response was not ok');
       }
-
-      const responseData = await response.json();
-      console.log('User created:', responseData);
-      navigate('/account-created'); // Redirect after successful creation
+  
+      navigate("/userhome");
     } catch (error) {
-      console.error('Error creating user:', error.message);
-      setAuthError('Failed to create preferences. Please try again.');
+      console.error('There was a problem with the fetch operation:', error);
     }
   };
-
-  const handleCreatePrefSubmit = (event) => {
-    event.preventDefault();
-
-    setTimeError('');
-    setLengthError('');
-    setAuthError('');
-
-    if (createLength === '') {
-      setLengthError('Please enter a response');
-      return;
-    }
-
-    if (createTime === '') {
-      setTimeError('Please select response');
-      return;
-    }
-
-    createPref();
-  };
-
-  const handleCreateTimeClick = (event) => {
-    setIsChecked(event.target.checked);
-    setCreateLength(event.target.value)
-  };
+  
 
   return (
-    <div className="createPrefContainer" style={{ textAlign: 'center' }}>
-      <div style={{ fontSize: '2.0em', marginBottom: '15px', fontWeight: 'bold' }}>Add Preferences</div>
-      <form onSubmit={handleCreatePrefSubmit}>
-        <div style={{ fontSize: '1.5em', marginBottom: '25px' }}>Enter your typical workout preferences!</div>
-        <input
-          type="text"
-          className="inputField"
-          value={createLength}
-          onChange={(e) => setCreateLength(e.target.value)}
-          placeholder="Enter Length of Workout"
-          style={{ marginBottom: '10px', width: '300px', padding: '10px' }}
-          required
-        />
-        <br />
-        <input
-          type="radio"
-          id = "createtime"
-          className="inputField"
-          value={createTime}
-          checked = {IsChecked}
-          onChange={handleCreateTimeClick}
-          placeholder="Enter Time of Workout"
-          style={{ marginBottom: '10px', width: '300px', padding: '10px' }}
-          required
-        />
-        <br />
-        <br>
-        <label for="createtime">Morning</label>
-        </br>
-        {timeError && <div style={{ color: 'red', marginTop: '5px' }}>{timeError}</div>}
+    <div className="mainContainer" style={{backgroundColor: "#003087", color: 'white', alignItems: 'center'}}>
+      <div className="titleContainer" style={{marginBottom: '50px', marginTop: '50px'}}>
+        Edit Preferences
+        <div style={{ fontSize: '0.3em', textAlign: 'center', marginTop: '20px', fontWeight: 'bold' }}>
+              Enter your workout preferences below.
+            </div>
+      </div>
+      <br />
+      <form onSubmit={handleSubmit}>
+        <div className="inputContainer">
+          <label htmlFor="uid">Enter your email ID:</label>
+          <input
+            type="text"
+            id="uid"
+            name="uid"
+            className="inputBox"
+            value={preferences.uid}
+            onChange={handleChange}
+            style={{ marginBottom: '40px'}}
+          />
+        </div>
 
-        <button
-          className="inputButton"
-          style={{ display: 'block', margin: '0 auto', fontSize: '1.2em', padding: '10px 20px' }}
-          type="submit"
-        >
-          Finish Preferences
-        </button>
-        {authError && <div style={{ color: 'red', marginTop: '10px' }}>{authError}</div>}
+        <div className="inputContainer">
+          <label htmlFor="length">Enter the length of your workout (in mins):</label>
+          <input
+            type="text"
+            id="length"
+            name="length"
+            className="inputBox"
+            value={preferences.length}
+            onChange={handleChange}
+            style={{ marginBottom: '40px'}}
+          />
+        </div>
+
+        <div className="inputContainer">
+          <label htmlFor="time">Enter the time of your workout (morning, afternoon, evening):</label>
+          <input
+            type="text"
+            id="time"
+            name="time"
+            className="inputBox"
+            value={preferences.time}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="buttonContainer">
+          <input
+            className="inputButton"
+            type="button"
+            value="Save"
+            onClick={handleSubmit}
+          />
+        </div>
       </form>
     </div>
   );
-};
+}
 
 export default CreatePreferences;

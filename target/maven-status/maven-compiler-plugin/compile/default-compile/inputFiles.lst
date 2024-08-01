@@ -1,4 +1,10 @@
-C:\Users\agurd\OneDrive - Duke University\Projects\DTech-BUILD\src\main\java\com\example\demo\config\WebConfig.java
-C:\Users\agurd\OneDrive - Duke University\Projects\DTech-BUILD\src\main\java\com\example\demo\controller\Controls.java
-C:\Users\agurd\OneDrive - Duke University\Projects\DTech-BUILD\src\main\java\com\example\demo\DemoApplication.java
-C:\Users\agurd\OneDrive - Duke University\Projects\DTech-BUILD\src\main\java\com\example\demo\model\User.java
+/Users/evaaggarwal/Desktop/Projects/DTech-BUILD/src/main/java/com/example/demo/DemoApplication.java
+/Users/evaaggarwal/Desktop/Projects/DTech-BUILD/src/main/java/com/example/demo/config/ConfigDataSource.java
+/Users/evaaggarwal/Desktop/Projects/DTech-BUILD/src/main/java/com/example/demo/config/WebConfig.java
+/Users/evaaggarwal/Desktop/Projects/DTech-BUILD/src/main/java/com/example/demo/controller/Controls.java
+/Users/evaaggarwal/Desktop/Projects/DTech-BUILD/src/main/java/com/example/demo/controller/JDBC.java
+/Users/evaaggarwal/Desktop/Projects/DTech-BUILD/src/main/java/com/example/demo/controller/PrefController.java
+/Users/evaaggarwal/Desktop/Projects/DTech-BUILD/src/main/java/com/example/demo/model/Preference.java
+/Users/evaaggarwal/Desktop/Projects/DTech-BUILD/src/main/java/com/example/demo/model/User.java
+/Users/evaaggarwal/Desktop/Projects/DTech-BUILD/src/main/java/com/example/demo/repository/PreferenceRepository.java
+/Users/evaaggarwal/Desktop/Projects/DTech-BUILD/src/main/java/com/example/demo/services/PreferenceServices.java
