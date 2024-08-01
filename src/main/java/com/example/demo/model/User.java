@@ -66,4 +66,10 @@ public class User {
     public String getGender() {
         return gender;
     }
+
+    public void setFirstName(String name) {
+    }
+
+    public void setEmail(String email2) {
+    }
 }

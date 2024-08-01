@@ -86,7 +86,7 @@ const Home = ({ loggedIn, email }) => {
     }
 
     if (authenticateUser(inputEmail, inputPassword)) {
-      navigate('/dashboard'); // Navigate to dashboard or update loggedIn state on successful login
+      navigate('/userhome'); // Navigate to dashboard or update loggedIn state on successful login
     } else {
       setAuthError('Invalid email or password');
     }
@@ -94,7 +94,7 @@ const Home = ({ loggedIn, email }) => {
 
   const handleCreateAccountSubmit = () => {
     // Handle account creation logic here...
-    navigate('/account-created');
+    navigate('/userhome');
     
   };
 

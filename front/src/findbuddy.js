@@ -7,15 +7,17 @@ function FindBuddy() {
 
     return(
         <>
+        <div className='mainContainer' style={{backgroundColor: "#003087"}}>
         <div className="buttonContainer">
             <input
               className="inputButton"
               type="button"
-              onClick={() => {navigate("/preferences")}} /* edit button and navigation */
-              value="Edit Preferences"
+              onClick={() => {navigate("/userhome")}} /* edit button and navigation */
+              value="Back Home"
               style={{ fontSize: '3.0em', padding: '15px 25px', marginTop: '20px' }}
             />
           </div>
+        </div>
           </>
     )
 }
